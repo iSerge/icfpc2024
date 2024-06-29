@@ -29,6 +29,7 @@ library
       Comm
       Lib
       Parser
+      Secret
       Term
   other-modules:
       Paths_icfpc2024

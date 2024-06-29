@@ -12,8 +12,10 @@ import Data.Text (Text)
 import qualified Data.Text as Text
 import Data.Text.Encoding as TSE
 
-authToken :: Header
-authToken = (hAuthorization , BSU.fromString "Bearer a57888ca-06a7-492c-8439-8c90dbc183dd")
+import Secret (authToken)
+
+authorization :: Header
+authorization = (hAuthorization , BSU.fromString authToken)
 
 commUrl :: String
 commUrl = "https://boundvariable.space/communicate"
@@ -25,6 +27,6 @@ communicate :: Text -> IO Text
 communicate s = do
     manager <- newManager tlsManagerSettings
     initialRequest <- parseRequest commUrl
-    let request = initialRequest { method = methodPost, requestBody = RequestBodyBS $ encode s, requestHeaders = [authToken] }
+    let request = initialRequest { method = methodPost, requestBody = RequestBodyBS $ encode s, requestHeaders = [authorization] }
     response <- httpLbs request manager
     return $ TSE.decodeUtf8 . BL.toStrict $ responseBody response
