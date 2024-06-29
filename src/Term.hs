@@ -79,8 +79,9 @@ instance Show Term where
   show (I n) = show n
   show (S s) = "\n" ++ s ++ "\n" -- show s
   show (U op t) = show op ++ show t
-  show (B op t1 t2) = "(" ++ show t1 ++ show op ++ show t2 ++ ")"
-  show (If c t f) = "if (" ++ show c ++ ") then {" ++ show t ++ "} else {" ++ show f ++ "}"
+  show (B Apply t1 t2) = "( apply " ++ show t1 ++ " " ++ show t2 ++ ")"
+  show (B op t1 t2) = "(" ++ show t1 ++ " " ++ show op ++ " " ++ show t2 ++ ")"
+  show (If c t f) = "if " ++ show c ++ " then {" ++ show t ++ "} else {" ++ show f ++ "}"
   show (L n t) = "\\" ++ show n ++ " -> (" ++ show t ++ ")"
   show (V n) = "v" ++ show n
 

@@ -27,6 +27,7 @@ library
   exposed-modules:
       Base94
       Comm
+      Evaluate
       Lib
       Parser
       Secret
@@ -45,6 +46,7 @@ library
     , http-client
     , http-client-tls
     , http-types
+    , mtl
     , parsec
     , text
     , utf8-string

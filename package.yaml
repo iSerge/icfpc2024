@@ -44,6 +44,7 @@ library:
   - http-types
   - utf8-string
   - bytestring
+  - mtl
 
 executables:
   icfpc2024-exe:

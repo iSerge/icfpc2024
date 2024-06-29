@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Parser (icfpParser, parseIcfp) where
+module Parser (icfpParser, parseIcfp, parseExpr) where
 
 import Base94 (icfp2n, icfp2s, icfpCodes)
 import Data.Functor as F
@@ -72,6 +72,11 @@ icfp = choice [true, false, int, str, var, unary, binary, lambda, condition]
 
 icfpParser :: Parsec String () [Term]
 icfpParser = sepBy1 icfp (many1 $ char ' ')
+
+parseExpr :: String -> Term
+parseExpr s = case parse icfp "Test expr" s of
+  Right t -> t
+  Left e -> S $ "Parse error: " ++ show e
 
 parseIcfp :: Text -> Text
 parseIcfp x = case parse icfpParser "Comm channel" (Text.unpack x) of
