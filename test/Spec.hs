@@ -1,6 +1,4 @@
 import Base94
--- import Data.List
--- import Data.Ord
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Tasty.QuickCheck as QC
@@ -23,8 +21,8 @@ base94 =
       testCase "ICFP value of test is 4%34" $ "4%34" @?= s2icfp "test",
       testCase "Text value of B%,,/}Q/2,$_ is Hello World!" $
         icfp2s "B%,,/}Q/2,$_" @?= "Hello World!"
-      -- QC.testProperty "To base94 and back"
-      --   $ \n -> (n :: Int) == (icfp2n . n2icfp) n
+        -- QC.testProperty "To base94 and back"
+        --   $ \n -> (n :: Int) == (icfp2n . n2icfp) n
     ]
 
 -- properties :: TestTree

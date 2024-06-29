@@ -2,9 +2,7 @@
 
 module Main (main) where
 
-import Parser (parseIcfp)
 import Comm (communicate)
-
 import Control.Monad (void)
 import Control.Monad.IO.Class (liftIO)
 import Control.Monad.State.Strict (get, modify)
@@ -12,6 +10,7 @@ import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as TIO
 import Linenoise
+import Parser (parseIcfp)
 
 type History = [Text]
 

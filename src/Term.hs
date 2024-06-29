@@ -19,7 +19,7 @@ instance Read UOp where
       '-' -> return Neg
       '!' -> return Not
       '#' -> return Str2Int
-      '$' ->return Int2Str
+      '$' -> return Int2Str
       _ -> pfail
 
 data BOp = Add | Sub | Mul | Div | Mod | LE | GT | EQ | Or | And | Concat | Take | Drop | Apply
@@ -94,4 +94,3 @@ toICFP (B op t1 t2) = "B" ++ show op ++ " " ++ toICFP t1 ++ " " ++ toICFP t2
 toICFP (If c t f) = "? " ++ toICFP c ++ " " ++ toICFP t ++ " " ++ toICFP f
 toICFP (L n t) = "L" ++ n2icfp n ++ " " ++ toICFP t
 toICFP (V n) = "v" ++ n2icfp n
-

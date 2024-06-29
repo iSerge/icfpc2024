@@ -8,7 +8,7 @@ n2icfp :: Int -> IcfpString
 n2icfp = iter []
   where
     iter :: IcfpString -> Int -> IcfpString
-    iter [] 0 = chr 33 : []
+    iter [] 0 = [chr 33]
     iter s 0 = s
     iter s n = iter (chr ((n `mod` 94) + 33) : s) (n `div` 94)
 
@@ -16,7 +16,7 @@ icfp2n :: IcfpString -> Int
 icfp2n = acc 0
   where
     acc n [] = n
-    acc n (x : xs) = acc (n * 94 + (ord (x) - 33)) xs
+    acc n (x : xs) = acc (n * 94 + (ord x - 33)) xs
 
 icfpAscii :: String
 icfpAscii = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!\"#$%&'()*+,-./:;<=>?@[\\]^_`|~ \n"
